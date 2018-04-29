@@ -1,0 +1,228 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:1-109:12
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:1-109:12
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:1-109:12
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:1-109:12
+MERGED from [com.android.support:support-v4:23.4.0] /Users/shixi_yunrui/.gradle/caches/transforms-1/files-1.1/support-v4-23.4.0.aar/299d474eaeb9ed9b819282c1d9f5f499/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:1-109:12
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:1-109:12
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:1-109:12
+	package
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:3:5-36
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:5:5-40
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:4:5-28
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+application
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:7:5-91:19
+MERGED from [com.android.support:support-v4:23.4.0] /Users/shixi_yunrui/.gradle/caches/transforms-1/files-1.1/support-v4-23.4.0.aar/299d474eaeb9ed9b819282c1d9f5f499/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] /Users/shixi_yunrui/.gradle/caches/transforms-1/files-1.1/support-v4-23.4.0.aar/299d474eaeb9ed9b819282c1d9f5f499/AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:10:9-31
+	android:icon
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:8:9-38
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:9:9-33
+activity#com.iflytek.voicedemo.MainActivity
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:11:9-22:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:16:13-49
+	android:label
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:15:13-35
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:13:13-133
+	android:icon
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:14:13-42
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:12:13-62
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:17:13-21:29
+action#android.intent.action.MAIN
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:18:17-69
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:18:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:20:17-77
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:20:27-74
+activity#com.iflytek.speech.setting.TtsSettings
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:23:9-24:20
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:23:19-72
+activity#com.iflytek.speech.setting.IatSettings
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:25:9-26:20
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:25:19-72
+activity#com.iflytek.voicedemo.IatDemo
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:27:9-31:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:30:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:29:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:28:13-57
+activity#com.iflytek.voicedemo.AsrDemo
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:32:9-36:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:35:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:34:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:33:13-57
+activity#com.iflytek.voicedemo.TtsDemo
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:37:9-41:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:40:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:39:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:38:13-57
+activity#com.iflytek.voicedemo.IseDemo
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:42:9-46:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:45:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:44:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:43:13-57
+activity#com.iflytek.voicedemo.vocalverify.VocalVerifyDemo
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:47:9-51:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:50:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:49:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:48:13-77
+activity#com.iflytek.voicedemo.faceonline.OnlineFaceDemo
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:52:9-56:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:55:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:54:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:53:13-75
+activity#com.iflytek.voicedemo.IdentifyGroup.GroupManagerActivity
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:57:9-61:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:60:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:59:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:58:13-84
+activity#com.iflytek.voicedemo.IdentifyGroup.FaceIdentifyActivity
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:62:9-66:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:65:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:64:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:63:13-84
+activity#com.iflytek.voicedemo.IdentifyGroup.VocalIdentifyActivity
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:67:9-71:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:70:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:69:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:68:13-85
+activity#com.iflytek.voicedemo.IdentifyGroup.ResultIdentifyActivity
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:72:9-76:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:75:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:74:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:73:13-86
+activity#com.iflytek.speech.setting.IseSettings
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:77:9-81:20
+	android:screenOrientation
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:80:13-49
+	android:configChanges
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:79:13-133
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:78:13-66
+meta-data#IFLYTEK_APPKEY
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:83:9-85:42
+	android:value
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:85:13-29
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:84:13-42
+meta-data#IFLYTEK_CHANNEL
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:86:9-88:44
+	android:value
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:88:13-41
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:87:13-43
+uses-sdk
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:93:5-43
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:93:5-43
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:93:5-43
+MERGED from [com.android.support:support-v4:23.4.0] /Users/shixi_yunrui/.gradle/caches/transforms-1/files-1.1/support-v4-23.4.0.aar/299d474eaeb9ed9b819282c1d9f5f499/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] /Users/shixi_yunrui/.gradle/caches/transforms-1/files-1.1/support-v4-23.4.0.aar/299d474eaeb9ed9b819282c1d9f5f499/AndroidManifest.xml:20:5-43
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:93:5-43
+INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:93:5-43
+	android:targetSdkVersion
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:93:5-43
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:93:15-40
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+		INJECTED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:95:5-71
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:95:22-68
+uses-permission#android.permission.INTERNET
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:96:5-67
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:96:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:97:5-79
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:97:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:98:5-76
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:98:22-73
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:99:5-79
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:99:22-76
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:100:5-75
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:100:22-72
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:101:5-79
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:101:22-76
+uses-permission#android.permission.READ_CONTACTS
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:102:5-72
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:102:22-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:103:5-81
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:103:22-78
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:104:2-70
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:104:19-67
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:105:2-77
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:105:19-74
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:107:5-81
+	android:name
+		ADDED from /Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/src/main/AndroidManifest.xml:107:22-78

@@ -1,0 +1,4 @@
+#Sun Apr 29 00:52:44 CST 2018
+base.0=/Users/shixi_yunrui/Developer/projects/SpeechEvaluator/speechDemo/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

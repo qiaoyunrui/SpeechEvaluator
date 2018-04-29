@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">语音评测</string>
+    <string name="app_id">5ae19fa8</string>
+    <string name="upload_topic">上传题目</string>
+    <string name="chinese">中文</string>
+    <string name="english">英文</string>
+    <string name="language">语言</string>
+    <string name="type">类型</string>
+    <string name="syllable">汉字</string>
+    <string name="word">词语</string>
+    <string name="sentence">句子</string>
+    <string name="chapter">篇章</string>
+    <string name="content">内容</string>
+    <string name="upload">上传</string>
+    <string name="click_to_evaluator">点击开始评测</string>
+    <string name="evaluator">评测</string>
+</resources>
