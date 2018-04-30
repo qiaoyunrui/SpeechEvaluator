@@ -89,6 +89,7 @@ public class EvaluatorActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.tb_common);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
+        // 显示返回按钮
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setTitle(getString(R.string.evaluator));
     }
@@ -98,6 +99,7 @@ public class EvaluatorActivity extends AppCompatActivity {
         mFabEvaluator.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+                    // fab 变大 1.2 倍
                     mFabEvaluator.setScaleX(1.2f);
                     mFabEvaluator.setScaleY(1.2f);
                     startEvaluator();
@@ -130,6 +132,8 @@ public class EvaluatorActivity extends AppCompatActivity {
         mResultFragment = new ResultFragment();
     }
 
+    // 显示评测结果页面
+    // 显示 Fragment
     public void openResultFragment(String result) {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             Bundle bundle = new Bundle();
@@ -211,6 +215,7 @@ public class EvaluatorActivity extends AppCompatActivity {
         }
         mTvHint.setText("评测中...");
         setParams();
+        // 开始评测
         int result = mIse.startEvaluating(mQuestion.getContentParam(), null, mEvaluatorListener);
         Log.i(TAG, "startEvaluator: Result Code: " + result);
     }
@@ -225,9 +230,10 @@ public class EvaluatorActivity extends AppCompatActivity {
         }
     }
 
+    // 设置评测参数
     private void setParams() {
         // 设置评测语言
-        String language = DataManager.getLanguageParam(mQuestion.getLanguageType());
+        String language = DataManager.getLanguageParam(mQuestion.getLanguageType());    // 0 - zh_ch
         // 设置需要评测的类型
         String category = DataManager.getTypeParam(mQuestion.getQuestionType());
         // 设置结果等级（中文仅支持complete）
@@ -290,6 +296,7 @@ public class EvaluatorActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            // 监听返回按钮
             case android.R.id.home:
                 onBackPressed();
                 break;

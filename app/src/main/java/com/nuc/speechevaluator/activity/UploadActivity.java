@@ -45,6 +45,7 @@ public class UploadActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private ActionBar mActionBar;
     private Button mBtnUpload;
+    // Loading 界面
     private ViewGroup mVgLoading;
 
     private Map<Integer, Integer> mTypeMap = new ArrayMap<>();
@@ -72,17 +73,17 @@ public class UploadActivity extends AppCompatActivity {
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setTitle(getString(R.string.upload_topic));
+        // 设置默认选中的 RadioButton
         mRgLanguage.check(DEFAULT_LANGUAGE_TYPE);
         mRgType.check(DEFAULT_QUESTION_TYPE);
         notifyLanguageChange(mRgLanguage.getCheckedRadioButtonId());
     }
 
     private void initEvent() {
+        // 切换语言时调用
         mRgLanguage.setOnCheckedChangeListener((group, checkedId) -> notifyLanguageChange(checkedId));
-        mBtnUpload.setOnClickListener(v -> {
-            // upload
-            upload();
-        });
+        // 点击上传按钮
+        mBtnUpload.setOnClickListener(v -> upload());
     }
 
     private void initData() {
@@ -122,13 +123,17 @@ public class UploadActivity extends AppCompatActivity {
      * 用于修改【汉字】的点击性
      */
     private void notifyLanguageChange(int id) {
+        // 汉字 RadioButton
         RadioButton radioButton = (RadioButton) mRgType.getChildAt(Constant.QUESTION_TYPE_SYLLABLE);
         switch (id) {
             case R.id.rb_chinese:
+                // 切换为中文，设置【汉字】可点击
                 radioButton.setEnabled(true);
                 break;
             case R.id.rb_english:
+                // 切换为英文，设置【汉字】不可点击
                 radioButton.setEnabled(false);
+                // 当前选择的类型为【汉字】，修改为默认类型
                 if (mRgType.getCheckedRadioButtonId() == R.id.rb_syllable) {
                     mRgType.check(DEFAULT_QUESTION_TYPE);
                 }

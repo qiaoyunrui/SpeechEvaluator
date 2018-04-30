@@ -25,7 +25,7 @@ public class QuestionImpl implements QuestionOperation {
         mRealm.executeTransactionAsync(realm -> {
             realm.copyToRealm(question);
             Log.i(TAG, "add: " + Thread.currentThread());
-        }, () -> {
+        }, () -> {  // 添加成功
             if (onSuccess != null) {
                 onSuccess.invoke(null);
             }

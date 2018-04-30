@@ -84,4 +84,15 @@ public class Question extends RealmObject implements Serializable {
         this.date = date;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id='" + id + '\'' +
+                ", languageType=" + languageType +
+                ", questionType=" + questionType +
+                ", content='" + content + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
