@@ -3,89 +3,127 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/wall_pic"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/wall_pic_height"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:src="@drawable/city" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wall_pic"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_signup_username"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/intput_username">
+                android:layout_height="match_parent">
 
-                <EditText
+                <ImageView
+                    android:id="@+id/wall_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/wall_pic_height"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:src="@drawable/city" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textNoSuggestions"
-                    android:selectAllOnFocus="true"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_below="@+id/wall_pic"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical">
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/til_signup_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/intput_username">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_signup_passwd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/input_passwd">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textNoSuggestions"
+                            android:selectAllOnFocus="true"
+                            android:textColor="@color/colorAccent" />
 
-                <EditText
-                    android:layout_width="match_parent"
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/til_signup_passwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/input_passwd">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:selectAllOnFocus="true"
+                            android:textColor="@color/colorAccent" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/til_signup_passwd_again"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/input_passwd_again">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:selectAllOnFocus="true"
+                            android:textColor="@color/colorAccent" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vg_admin_wrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/anim"
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <CheckBox
+                            android:id="@+id/cb_is_admin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/pb_signup"
+                    style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:selectAllOnFocus="true"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_centerInParent="true"
+                    android:visibility="visible" />
 
-            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_signup_passwd_again"
-                android:layout_width="match_parent"
+            </RelativeLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_signup"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/input_passwd_again">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:selectAllOnFocus="true"
-                    android:textColor="@color/colorAccent" />
-
-            </android.support.design.widget.TextInputLayout>
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:clickable="true"
+                android:src="@drawable/ic_point_left" />
 
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/pb_signup"
-            style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="visible" />
-
-
-    </RelativeLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:clickable="true"
-        android:src="@drawable/ic_point_left" />
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -14,10 +14,11 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Question extends RealmObject implements Serializable {
 
-    public static Question createQuestion() {
+    public static Question createQuestion(String ownerId) {
         Question question = new Question();
         question.setId(UUID.randomUUID().toString());
         question.setDate(new Date());
+        question.setOwnerId(ownerId);
         return question;
     }
 
@@ -31,6 +32,17 @@ public class Question extends RealmObject implements Serializable {
     private String content; //试题内容
 
     private Date date;    //创建日期
+
+    private String ownerId;   //出题人 ID
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public Question setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
 
     public String getId() {
         return id;

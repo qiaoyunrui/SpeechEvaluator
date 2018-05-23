@@ -5,13 +5,15 @@ package com.nuc.speechevaluator.util;
  */
 public class Config {
 
-    public final static String CITY_CODE = "cityCode";
+    public final static String KEY_USER_SERVICE = "user_service";
     public final static int SEARCH_CODE = 0x123;
     public final static int SIGN_CODE = 0x124;
     public final static int SETTING_CODE = 0x125;
     public final static int BROWSE_CODE = 0x126;
     public final static int CAMERA_CODE = 0x127;
     public final static int GALLERY_CODE = 0x128;
+    public static final int MAIN_CODE = 0x129;
+
 
     public final static double QUERY_LIMIT_RADIUS = 0.05;
 
@@ -59,4 +61,7 @@ public class Config {
 
     public final static String COVERSATION = "Coversation";
 
+    public static final String KEY_USER_ID = "user_id";
+
+    public static final String KEY_ADMIN = "1234567890";
 }

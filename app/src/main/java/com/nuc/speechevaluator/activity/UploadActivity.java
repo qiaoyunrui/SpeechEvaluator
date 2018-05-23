@@ -19,9 +19,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.nuc.speechevaluator.R;
+import com.nuc.speechevaluator.db.UserService;
 import com.nuc.speechevaluator.db.bean.Question;
+import com.nuc.speechevaluator.db.bean.User;
 import com.nuc.speechevaluator.db.impl.QuestionImpl;
 import com.nuc.speechevaluator.db.operation.QuestionOperation;
+import com.nuc.speechevaluator.util.Closure;
 import com.nuc.speechevaluator.util.Constant;
 
 import java.util.Map;
@@ -97,25 +100,34 @@ public class UploadActivity extends AppCompatActivity {
 
     private void upload() {
         mVgLoading.setVisibility(View.VISIBLE);
-        Question question = Question.createQuestion();
-        question.setLanguageType(mTypeMap.get(mRgLanguage.getCheckedRadioButtonId()))
-                .setQuestionType(mTypeMap.get(mRgType.getCheckedRadioButtonId()))
-                .setContent(mEtContent.getText().toString().trim());
-        if (TextUtils.isEmpty(question.getContent())) {
-            mVgLoading.setVisibility(View.GONE);
-            Toast.makeText(this, "题目内容不能为空", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        mOperation.add(question, aVoid -> {
-            Toast.makeText(this, "上传成功", Toast.LENGTH_SHORT).show();
-            mVgLoading.setVisibility(View.GONE);
-            setResult(RESULT_CODE_UPLOAD);
-            finish();
-        }, throwable -> {
-            throwable.printStackTrace();
-            Toast.makeText(this, "上传失败", Toast.LENGTH_SHORT).show();
-            mVgLoading.setVisibility(View.GONE);
-        });
+        UserService.getInstance(this)
+                .getCurrentUser(user -> {
+                    if (user == null) {
+                        Toast.makeText(this, "上传失败", Toast.LENGTH_SHORT).show();
+                        mVgLoading.setVisibility(View.GONE);
+                        return;
+                    }
+                    Question question = Question.createQuestion(user.getId());
+                    question.setLanguageType(mTypeMap.get(mRgLanguage.getCheckedRadioButtonId()))
+                            .setQuestionType(mTypeMap.get(mRgType.getCheckedRadioButtonId()))
+                            .setContent(mEtContent.getText().toString().trim());
+                    if (TextUtils.isEmpty(question.getContent())) {
+                        mVgLoading.setVisibility(View.GONE);
+                        Toast.makeText(this, "题目内容不能为空", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    mOperation.add(question, aVoid -> {
+                        Toast.makeText(this, "上传成功", Toast.LENGTH_SHORT).show();
+                        mVgLoading.setVisibility(View.GONE);
+                        setResult(RESULT_CODE_UPLOAD);
+                        finish();
+                    }, throwable -> {
+                        throwable.printStackTrace();
+                        Toast.makeText(this, "上传失败", Toast.LENGTH_SHORT).show();
+                        mVgLoading.setVisibility(View.GONE);
+                    });
+                });
+
     }
 
     /**

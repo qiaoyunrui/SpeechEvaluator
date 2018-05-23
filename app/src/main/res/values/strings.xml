@@ -45,4 +45,6 @@
     <string name="send">发送</string>
     <string name="say_some_thing">说点什么吧</string>
     <!--OLD END-->
+    <string name="anim">管理员</string>
+    <string name="no_content">没有内容</string>
 </resources>

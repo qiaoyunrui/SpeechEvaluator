@@ -11,10 +11,13 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 
 import com.nuc.speechevaluator.R;
+import com.nuc.speechevaluator.db.bean.User;
 import com.nuc.speechevaluator.old.sign.SignActivity;
+import com.nuc.speechevaluator.util.Config;
 
 /**
  * Created by qiaoyunrui on 16-8-26.
@@ -31,6 +34,8 @@ public class SignUpFragment extends Fragment implements SignUpContract.View {
 
     private FloatingActionButton mFabSignup;
     private ProgressBar mPbSignup;
+    private CheckBox mCbIsAdmin;
+    private ViewGroup mVgAdminWrapper;
 
     private View rootView;
 
@@ -47,6 +52,8 @@ public class SignUpFragment extends Fragment implements SignUpContract.View {
         mTILPasswdAgain = rootView.findViewById(R.id.til_signup_passwd_again);
         mFabSignup = rootView.findViewById(R.id.fab_signup);
         mPbSignup = rootView.findViewById(R.id.pb_signup);
+        mVgAdminWrapper = rootView.findViewById(R.id.vg_admin_wrapper);
+        mCbIsAdmin = rootView.findViewById(R.id.cb_is_admin);
         configEdit();
         initEvent();
         return rootView;
@@ -58,11 +65,16 @@ public class SignUpFragment extends Fragment implements SignUpContract.View {
             public void onClick(View v) {
                 mPresenter.signUp(mTILUsername.getEditText().getText().toString(),
                         mTILPasswd.getEditText().getText().toString(),
+                        mCbIsAdmin.isChecked() ? User.USER_TYPE_ADMIN : User.USER_TYPE_NORMAL,
                         user -> {
                             hideProgressBar();
                             if (user != null) {
-                                showToast("注册成功,欢迎使用");
-                                ((SignActivity) getActivity()).turnSignIn();
+//                                showToast("注册成功,欢迎使用");
+                                mTILPasswd.getEditText().setText("");
+                                mTILPasswdAgain.getEditText().setText("");
+                                mTILUsername.getEditText().setText("");
+                                Snackbar.make(rootView, "注册成功，请登录。", Snackbar.LENGTH_SHORT)
+                                        .setAction("登录", v1 -> ((SignActivity) getActivity()).turnSignIn()).show();
                             } else {
                                 showToast("注册失败");
                             }
@@ -126,6 +138,9 @@ public class SignUpFragment extends Fragment implements SignUpContract.View {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().equals(Config.KEY_ADMIN)) {
+                    mVgAdminWrapper.setVisibility(View.VISIBLE);
+                }
                 if (s.length() < 6) {
                     mTILUsername.setError("用户名长度太短");
                     usernameOK = false;

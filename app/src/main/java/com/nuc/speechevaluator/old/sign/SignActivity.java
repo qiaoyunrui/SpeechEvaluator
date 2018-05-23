@@ -60,7 +60,7 @@ public class SignActivity extends AppCompatActivity {
 
     private void initActionBar() {
 
-        mToolbar = (Toolbar) findViewById(R.id.tb_sign);
+        mToolbar = findViewById(R.id.tb_sign);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setHomeButtonEnabled(true);
@@ -69,8 +69,8 @@ public class SignActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mTLayout = (TabLayout) findViewById(R.id.tl_layout);
-        mVPager = (ViewPager) findViewById(R.id.vp_layout);
+        mTLayout = findViewById(R.id.tl_layout);
+        mVPager = findViewById(R.id.vp_layout);
     }
 
     private void initFragment() {
@@ -105,4 +105,5 @@ public class SignActivity extends AppCompatActivity {
     public void turnSignIn() {
         mVPager.setCurrentItem(0);
     }
+
 }

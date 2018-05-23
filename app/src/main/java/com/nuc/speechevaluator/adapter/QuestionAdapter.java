@@ -19,6 +19,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     private List<Question> mQuestions = new ArrayList<>();
     private Closure<Question> mClosure;
+    private Closure<Boolean> mEmptyClosure;
 
     public void setQuestions(List<Question> questions) {
         if (questions == null) return;
@@ -29,6 +30,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     public void setItemClickListener(Closure<Question> closure) {
         this.mClosure = closure;
+    }
+
+    public void setEmptyClosure(Closure<Boolean> closure) {
+        this.mEmptyClosure = closure;
     }
 
     @NonNull
@@ -56,7 +61,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     @Override
     public int getItemCount() {
-        return mQuestions.size();
+        int size = mQuestions.size();
+        if (mEmptyClosure != null) {
+            mEmptyClosure.invoke(size == 0);
+        }
+        return size;
     }
 
     static class QuestionViewHolder extends RecyclerView.ViewHolder {

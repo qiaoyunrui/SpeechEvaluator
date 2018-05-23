@@ -21,6 +21,7 @@ import com.juhezi.citymemory.R;
 import com.juhezi.citymemory.map.MapContract;
 import com.juhezi.citymemory.other.Config;*/
 import com.nuc.speechevaluator.R;
+import com.nuc.speechevaluator.db.UserService;
 import com.nuc.speechevaluator.util.Config;
 
 /**
@@ -114,6 +115,7 @@ public class SignInFragment extends Fragment implements SignInContract.View {
                         hideProgressBar();
                         if (user != null) {
                             showSnackBar("登陆成功");
+                            UserService.getInstance(getContext()).signIn(user);
                             getActivity().setResult(Config.SIGN_CODE, null);
                             getActivity().finish();
                         } else {

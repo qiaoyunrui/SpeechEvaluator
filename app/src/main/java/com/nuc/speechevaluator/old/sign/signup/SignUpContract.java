@@ -11,7 +11,7 @@ import com.nuc.speechevaluator.util.Closure;
 public interface SignUpContract {
 
     interface Presenter extends BasePresenter {
-        void signUp(String username, String password, Closure<User> callback);
+        void signUp(String username, String password, int type, Closure<User> callback);
     }
 
     interface View extends BaseView<Presenter> {

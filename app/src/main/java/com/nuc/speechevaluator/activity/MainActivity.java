@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.nuc.speechevaluator.R;
 import com.nuc.speechevaluator.adapter.QuestionAdapter;
+import com.nuc.speechevaluator.db.UserService;
 import com.nuc.speechevaluator.db.bean.Question;
 import com.nuc.speechevaluator.db.impl.QuestionImpl;
 import com.nuc.speechevaluator.db.operation.QuestionOperation;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton mFabUpload;
     // Loading 界面
     private ViewGroup mVgLoading;
+    private ViewGroup mVgEmpty;
     private Toolbar mToolbar;
     private ActionBar mActionBar;
     private RecyclerView mRecyclerView;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        UserService.checkAndSignIn(this, Config.MAIN_CODE);
         initView();
         initEvent();
         mVgLoading.setVisibility(View.VISIBLE);
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mFabUpload = findViewById(R.id.fab_main_upload);
         mVgLoading = findViewById(R.id.vg_loading);
+        mVgEmpty = findViewById(R.id.vg_empty);
         mToolbar = findViewById(R.id.tb_common);
         mRecyclerView = findViewById(R.id.rv_main_question_list);
         setSupportActionBar(mToolbar);
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "invoke: " + question);
             turn2EvaluatorActivity(question);
         });
+        mAdapter.setEmptyClosure(aBoolean -> mVgEmpty.setVisibility(aBoolean ? View.VISIBLE : View.GONE));
     }
 
     private void refresh() {
@@ -88,12 +93,6 @@ public class MainActivity extends AppCompatActivity {
             mVgLoading.setVisibility(View.GONE);
 //            Toast.makeText(this, "加载数据失败", Toast.LENGTH_SHORT).show();
         });
-    }
-
-    private void turn2SignActivity() {
-        Intent intent = new Intent(this, SignActivity.class);
-        startActivityForResult(intent, Config.SIGN_CODE);
-        // TODO: 2018/5/23 需要优化逻辑
     }
 
     private void turn2UploadActivity() {
@@ -115,6 +114,12 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == UploadActivity.RESULT_CODE_UPLOAD) {
                 mVgLoading.setVisibility(View.VISIBLE);
                 refresh();
+            }
+        } else if (requestCode == Config.MAIN_CODE) {
+            if (resultCode == Config.SIGN_CODE) {  // 登录成功
+                refresh();  //重新刷新
+            } else {
+                finish();
             }
         }
 

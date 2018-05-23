@@ -19,7 +19,7 @@ public class BaseApplication extends Application {
         RealmConfiguration config = new RealmConfiguration
                 .Builder()
                 .name("speech_evaluator.realm")
-                .schemaVersion(1)
+                .schemaVersion(2)
                 .build();
         Realm.setDefaultConfiguration(config);
         DataManager.init(this);
