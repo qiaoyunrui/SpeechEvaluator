@@ -18,7 +18,9 @@ import com.nuc.speechevaluator.adapter.QuestionAdapter;
 import com.nuc.speechevaluator.db.bean.Question;
 import com.nuc.speechevaluator.db.impl.QuestionImpl;
 import com.nuc.speechevaluator.db.operation.QuestionOperation;
+import com.nuc.speechevaluator.old.sign.SignActivity;
 import com.nuc.speechevaluator.util.Closure;
+import com.nuc.speechevaluator.util.Config;
 
 import java.util.List;
 
@@ -86,6 +88,12 @@ public class MainActivity extends AppCompatActivity {
             mVgLoading.setVisibility(View.GONE);
 //            Toast.makeText(this, "加载数据失败", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void turn2SignActivity() {
+        Intent intent = new Intent(this, SignActivity.class);
+        startActivityForResult(intent, Config.SIGN_CODE);
+        // TODO: 2018/5/23 需要优化逻辑
     }
 
     private void turn2UploadActivity() {

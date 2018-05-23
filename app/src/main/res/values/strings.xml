@@ -14,4 +14,35 @@
     <string name="upload">上传</string>
     <string name="click_to_evaluator">点击开始评测</string>
     <string name="evaluator">评测</string>
+
+    <!--OLD START-->
+    <string name="info">通知</string>
+    <string name="setting">设置</string>
+    <string name="about">关于</string>
+    <string name="search_content">寻找想去的地方</string>
+    <string name="view">查看</string>
+    <string name="move_pin">定位中..</string>
+    <string name="click_to_signin">点击登录</string>
+    <string name="own_memories">创建的回忆</string>
+    <string name="pip_memories">见证的回忆</string>
+    <string name="intput_username">请输入用户名</string>
+    <string name="input_passwd">请输入密码</string>
+    <string name="input_passwd_again">再次输入密码</string>
+    <string name="pick_name">昵称</string>
+    <string name="sign_out">退出登录</string>
+    <string name="input_your_discuss">评价这个记忆流</string>
+    <string name="use_pic_location">在照片地理位置上传</string>
+    <string name="camera">拍照</string>
+    <string name="gallery">相册</string>
+    <string name="current_address">当前位置:</string>
+    <string name="pic_address">图片位置:</string>
+    <string name="there_no_memory">此处没有记忆,快来添加吧!</string>
+    <string name="comment">私信</string>
+    <string name="there_no_message">暂时没有私信</string>
+    <string name="search_user_name">搜索你想发送私信的人</string>
+    <string name="message">私信</string>
+    <string name="clear">清除聊天记录</string>
+    <string name="send">发送</string>
+    <string name="say_some_thing">说点什么吧</string>
+    <!--OLD END-->
 </resources>

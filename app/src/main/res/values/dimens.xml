@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_height">192dp</dimen>
+    <dimen name="nav_header_avatar_size">100dp</dimen>
+    <dimen name="nav_header_name_text_size">20sp</dimen>
+    <dimen name="search_elevation">10dp</dimen>
+    <dimen name="location_item_height">80dp</dimen>
+    <dimen name="ic_place_size">50dp</dimen>
+    <dimen name="action_evelation">10dp</dimen>
+    <dimen name="board_height">58dp</dimen>
+    <dimen name="board_height_double">116dp</dimen>
+    <dimen name="board_elevation">6dp</dimen>
+    <dimen name="sign_avatar_margin_top">40dp</dimen>
+    <dimen name="wall_pic_height">200dp</dimen>
+    <dimen name="setting_title_width">50dp</dimen>
+    <dimen name="setting_pick_name_size">30sp</dimen>
+    <dimen name="setting_memories_board_height">140dp</dimen>
+    <dimen name="setting_memories_num_text_size">50sp</dimen>
+    <dimen name="memory_item_avatar_size">50dp</dimen>
+    <dimen name="discuss_item_discuss_min_htight">30dp</dimen>
+    <dimen name="discuss_item_discuss_text_size">15sp</dimen>
+    <dimen name="marker_img_size">50dp</dimen>
+    <dimen name="serach_item_margin">8dp</dimen>
+    <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="message_item_height">75dp</dimen>
+    <dimen name="message_name_text_size">20sp</dimen>
+    <dimen name="person_dialog_width">300dp</dimen>
+    <dimen name="person_dialog_height">400dp</dimen>
+    <dimen name="person_dialog_name_size">30sp</dimen>
+    <dimen name="person_dialog_avatar_margin_top">20dp</dimen>
+    <dimen name="person_dialog_board_height">110dp</dimen>
+    <dimen name="cov_send_btn_width">60dp</dimen>
+    <dimen name="nav_header_tag_size">25dp</dimen>
+    <dimen name="rounded_rectangle_radius">30dp</dimen>
+</resources>

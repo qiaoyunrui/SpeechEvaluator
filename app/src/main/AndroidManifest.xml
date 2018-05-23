@@ -22,6 +22,9 @@
         <activity
             android:name=".activity.EvaluatorActivity"
             android:exported="true" />
+        <activity
+            android:name=".old.sign.SignActivity"
+            android:exported="true" />
     </application>
 
     <!--连接网络权限，用于执行云端语音能力 -->
