@@ -68,4 +68,14 @@ public class User extends RealmObject implements Serializable {
         this.password = password;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", type=" + type +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

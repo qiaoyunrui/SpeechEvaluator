@@ -29,6 +29,8 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechEvaluator;
 import com.nuc.speechevaluator.R;
 import com.nuc.speechevaluator.db.bean.Question;
+import com.nuc.speechevaluator.db.impl.UserImpl;
+import com.nuc.speechevaluator.db.operation.UserOperation;
 import com.nuc.speechevaluator.fragment.ResultFragment;
 import com.nuc.speechevaluator.util.Constant;
 import com.nuc.speechevaluator.util.DataManager;
@@ -55,8 +57,11 @@ public class EvaluatorActivity extends AppCompatActivity {
     private TextView mTvLanguage;
     private TextView mTvType;
     private TextView mTvContent;
+    private TextView mTvOwner;      //显示出题人的用户名
     private TextView mTvHint;
     private FloatingActionButton mFabEvaluator;
+
+    private UserOperation mUserOperation;
 
     private Toolbar mToolbar;
     private ActionBar mActionBar;
@@ -69,6 +74,7 @@ public class EvaluatorActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluator);
+        mUserOperation = new UserImpl();
         mIse = SpeechEvaluator.createEvaluator(EvaluatorActivity.this, null);
         initView();
         initEvent();
@@ -84,6 +90,7 @@ public class EvaluatorActivity extends AppCompatActivity {
         mTvLanguage = findViewById(R.id.tv_evaluator_language);
         mTvContent = findViewById(R.id.tv_evaluator_content);
         mTvType = findViewById(R.id.tv_evaluator_type);
+        mTvOwner = findViewById(R.id.tv_evaluator_owner_username);
         mFabEvaluator = findViewById(R.id.fab_evaluator_evaluator);
         mTvHint = findViewById(R.id.tv_evaluator_hint);
         mToolbar = findViewById(R.id.tb_common);
@@ -124,6 +131,12 @@ public class EvaluatorActivity extends AppCompatActivity {
             mTvType.setText(DataManager.getType(mQuestion.getQuestionType()));
             mTvLanguage.setText(DataManager.getLanguage(mQuestion.getLanguageType()));
             mTvContent.setText(mQuestion.getContent());
+            // 根据用户 id 获取用户名
+            mUserOperation.query(mQuestion.getOwnerId(), user -> {
+                if (user != null) {
+                    mTvOwner.setText(user.getUsername());
+                }
+            }, null);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.nuc.speechevaluator.old.sign;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -12,6 +13,9 @@ import android.view.MenuItem;
 
 
 import com.nuc.speechevaluator.R;
+import com.nuc.speechevaluator.activity.MainActivity;
+import com.nuc.speechevaluator.db.UserService;
+import com.nuc.speechevaluator.fragment.MainFragment;
 import com.nuc.speechevaluator.old.sign.signin.SignInFragment;
 import com.nuc.speechevaluator.old.sign.signin.SignInPresenter;
 import com.nuc.speechevaluator.old.sign.signin.SignInContract;
@@ -47,6 +51,13 @@ public class SignActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_act);
+
+        if (UserService.getInstance(this).isOnline()) {     //已经登录
+            // 直接进入主页面
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         initActionBar();
 

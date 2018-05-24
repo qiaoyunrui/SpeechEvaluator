@@ -13,6 +13,7 @@ public class Config {
     public final static int CAMERA_CODE = 0x127;
     public final static int GALLERY_CODE = 0x128;
     public static final int MAIN_CODE = 0x129;
+    public static final int ME_CODE = 0x130;
 
 
     public final static double QUERY_LIMIT_RADIUS = 0.05;

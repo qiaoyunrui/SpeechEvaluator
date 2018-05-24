@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".old.sign.SignActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,10 @@
             android:name=".activity.EvaluatorActivity"
             android:exported="true" />
         <activity
-            android:name=".old.sign.SignActivity"
+            android:name=".activity.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CategoryActivity"
             android:exported="true" />
     </application>
 

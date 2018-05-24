@@ -1,44 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/vg_main_fragment_wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_above="@+id/bnv_main_bottom" />
 
-        <include layout="@layout/view_toolbar" />
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bnv_main_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/bottom_selector"
+        app:itemTextColor="@drawable/bottom_selector"
+        app:menu="@menu/bottom_bar_item" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_main_question_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <include layout="@layout/view_empty" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_main_upload"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:src="@drawable/ic_add"
-                app:rippleColor="@color/colorPrimary" />
-
-        </FrameLayout>
-
-    </LinearLayout>
-
-
-    <include layout="@layout/view_loading" />
-
-</FrameLayout>
+</RelativeLayout>

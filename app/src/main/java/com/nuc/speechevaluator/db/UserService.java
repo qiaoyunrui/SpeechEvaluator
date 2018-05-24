@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.nuc.speechevaluator.db.bean.User;
 import com.nuc.speechevaluator.db.impl.UserImpl;
@@ -15,6 +16,8 @@ import com.nuc.speechevaluator.util.Closure;
 import com.nuc.speechevaluator.util.Config;
 
 public class UserService {
+
+    private static final String TAG = "UserService";
 
     private static UserService sInstance;
 
@@ -51,6 +54,7 @@ public class UserService {
         if (closure == null) return;
         if (mCurrentUser != null) {
             closure.invoke(mCurrentUser);
+            return;
         }
         if (mContext == null) {
             closure.invoke(null);
@@ -63,7 +67,10 @@ public class UserService {
             closure.invoke(null);
             return;
         }
-        mOperation.query(id, closure, throwable -> closure.invoke(null));
+        mOperation.query(id, closure, throwable -> {
+            closure.invoke(null);
+            throwable.printStackTrace();
+        });
     }
 
     public boolean isOnline() {
@@ -99,6 +106,7 @@ public class UserService {
                     .getSharedPreferences(Config.KEY_USER_SERVICE, Context.MODE_PRIVATE)
                     .edit();
             editor.putString(Config.KEY_USER_ID, "");
+            editor.apply();
         }
     }
 
@@ -114,6 +122,11 @@ public class UserService {
             Intent intent = new Intent(context, SignActivity.class);
             ((Activity) context).startActivityForResult(intent, requestCode);
         }
+    }
+
+    public static void turnSignIn(Context context, int requestCode) {
+        Intent intent = new Intent(context, SignActivity.class);
+        ((Activity) context).startActivityForResult(intent, requestCode);
     }
 
 }

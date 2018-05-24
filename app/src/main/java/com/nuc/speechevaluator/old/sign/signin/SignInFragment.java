@@ -1,5 +1,6 @@
 package com.nuc.speechevaluator.old.sign.signin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -21,7 +22,9 @@ import com.juhezi.citymemory.R;
 import com.juhezi.citymemory.map.MapContract;
 import com.juhezi.citymemory.other.Config;*/
 import com.nuc.speechevaluator.R;
+import com.nuc.speechevaluator.activity.MainActivity;
 import com.nuc.speechevaluator.db.UserService;
+import com.nuc.speechevaluator.fragment.MainFragment;
 import com.nuc.speechevaluator.util.Config;
 
 /**
@@ -116,7 +119,8 @@ public class SignInFragment extends Fragment implements SignInContract.View {
                         if (user != null) {
                             showSnackBar("登陆成功");
                             UserService.getInstance(getContext()).signIn(user);
-                            getActivity().setResult(Config.SIGN_CODE, null);
+                            Intent intent = new Intent(getContext(), MainActivity.class);
+                            startActivity(intent);
                             getActivity().finish();
                         } else {
                             showSnackBar("用户名和密码不匹配");

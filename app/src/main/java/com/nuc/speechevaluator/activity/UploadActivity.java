@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.ArrayMap;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ import com.nuc.speechevaluator.util.Constant;
 import java.util.Map;
 
 public class UploadActivity extends AppCompatActivity {
+
+    private static final String TAG = "UploadActivity";
 
     private static final int DEFAULT_LANGUAGE_TYPE = R.id.rb_english;
     private static final int DEFAULT_QUESTION_TYPE = R.id.rb_word;
@@ -101,9 +104,18 @@ public class UploadActivity extends AppCompatActivity {
     private void upload() {
         mVgLoading.setVisibility(View.VISIBLE);
         UserService.getInstance(this)
-                .getCurrentUser(user -> {
+                .getCurrentUser(user -> runOnUiThread(() -> {
+//                    Log.i(TAG, "upload: " + user);
+//                    Log.i(TAG, "upload: " + Thread.currentThread().getName());
                     if (user == null) {
                         Toast.makeText(this, "上传失败", Toast.LENGTH_SHORT).show();
+                        mVgLoading.setVisibility(View.GONE);
+                        return;
+                    }
+//                    Log.i(TAG, "upload: 是否有权限？" + (user.getType() == User.USER_TYPE_ADMIN));
+                    if (user.getType() != User.USER_TYPE_ADMIN) {
+                        Log.i(TAG, "upload: 上传失败");
+                        Toast.makeText(this, "没有权限", Toast.LENGTH_SHORT).show();
                         mVgLoading.setVisibility(View.GONE);
                         return;
                     }
@@ -126,7 +138,7 @@ public class UploadActivity extends AppCompatActivity {
                         Toast.makeText(this, "上传失败", Toast.LENGTH_SHORT).show();
                         mVgLoading.setVisibility(View.GONE);
                     });
-                });
+                }));
 
     }
 
