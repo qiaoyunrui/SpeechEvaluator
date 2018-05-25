@@ -25,9 +25,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     private List<Category> mList = new ArrayList<>();
     private View mHeaderView;
     private Closure<Category> mClosure;
+    private boolean mShowAddButton = false;
 
     public CategoryAdapter() {
         mList.add(new Category());
+    }
+
+    public void setShowAddButton(boolean showAddButton) {
+        this.mShowAddButton = showAddButton;
+        notifyItemChanged(0);
     }
 
     public void setCategorys(List<Category> list) {
@@ -47,7 +53,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
         if (viewType == ITEM_TYPE_HEADER) {
-            if (mHeaderView != null) {
+            if (mHeaderView != null && mShowAddButton) {
                 itemView = mHeaderView;
             } else {
                 itemView = new View(parent.getContext());

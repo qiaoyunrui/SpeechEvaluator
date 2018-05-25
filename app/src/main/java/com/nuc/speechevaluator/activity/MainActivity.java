@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 
 import com.nuc.speechevaluator.R;
+import com.nuc.speechevaluator.fragment.CategoryFragment;
 import com.nuc.speechevaluator.fragment.MainFragment;
 import com.nuc.speechevaluator.fragment.MeFragment;
 
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup mWrapper;
     private MeFragment mMeFragment; // 第三个 tab 所对应的页面
     private MainFragment mMainFragment;    // 第一个 tab 对应的页面
-    private MeFragment mTempFragment2;
+    private CategoryFragment mCategoryFragment;
 
     private Fragment mShowingFragment;  //当前显示的 fragment
 
@@ -45,15 +46,15 @@ public class MainActivity extends AppCompatActivity {
     private void initFragment() {
         mMeFragment = new MeFragment();
         mMainFragment = new MainFragment();
-        mTempFragment2 = new MeFragment();
+        mCategoryFragment = new CategoryFragment();
         mShowingFragment = mMainFragment;
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.vg_main_fragment_wrapper, mMainFragment)
-                .add(R.id.vg_main_fragment_wrapper, mTempFragment2)
+                .add(R.id.vg_main_fragment_wrapper, mCategoryFragment)
                 .add(R.id.vg_main_fragment_wrapper, mMeFragment)
                 .show(mMainFragment)
-                .hide(mTempFragment2)
+                .hide(mCategoryFragment)
                 .hide(mMeFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     openFragment(mMainFragment);
                     break;
                 case R.id.menu_category:
-                    openFragment(mTempFragment2);
+                    openFragment(mCategoryFragment);
                     // 切换到题目分类页面，即第二个页面
                     break;
                 case R.id.menu_me:

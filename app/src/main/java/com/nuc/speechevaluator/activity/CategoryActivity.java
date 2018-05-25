@@ -75,12 +75,7 @@ public class CategoryActivity extends AppCompatActivity {
                     hideSoftInput();
                     add();  // 向数据库添加新的类别
                 })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        hideSoftInput();
-                    }
-                })
+                .setNegativeButton("取消", (dialog, which) -> hideSoftInput())
                 .create();
         mEtInput = inputWrapper.findViewById(R.id.et_category_input);
     }

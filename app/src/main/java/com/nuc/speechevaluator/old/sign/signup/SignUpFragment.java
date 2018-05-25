@@ -1,6 +1,7 @@
 package com.nuc.speechevaluator.old.sign.signup;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,6 +37,7 @@ public class SignUpFragment extends Fragment implements SignUpContract.View {
     private ProgressBar mPbSignup;
     private CheckBox mCbIsAdmin;
     private ViewGroup mVgAdminWrapper;
+    private Handler mHandler = new Handler();
 
     private View rootView;
 
@@ -70,11 +72,9 @@ public class SignUpFragment extends Fragment implements SignUpContract.View {
                             hideProgressBar();
                             if (user != null) {
 //                                showToast("注册成功,欢迎使用");
-                                mTILPasswd.getEditText().setText("");
-                                mTILPasswdAgain.getEditText().setText("");
-                                mTILUsername.getEditText().setText("");
                                 Snackbar.make(rootView, "注册成功，请登录。", Snackbar.LENGTH_SHORT)
                                         .setAction("登录", v1 -> ((SignActivity) getActivity()).turnSignIn()).show();
+                                mHandler.postDelayed(() -> ((SignActivity) getActivity()).turnSignIn(), 3000);  //3 s 后自动切换到登录页面
                             } else {
                                 showToast("注册失败");
                             }

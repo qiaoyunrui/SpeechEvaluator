@@ -2,6 +2,7 @@ package com.nuc.speechevaluator.db.impl;
 
 import android.util.Log;
 
+import com.nuc.speechevaluator.db.bean.Category;
 import com.nuc.speechevaluator.db.bean.Question;
 import com.nuc.speechevaluator.db.operation.QuestionOperation;
 import com.nuc.speechevaluator.util.Closure;
@@ -52,6 +53,20 @@ public class QuestionImpl implements QuestionOperation {
         mRealm.executeTransactionAsync(realm -> {
             Log.i(TAG, "queryAll: " + Thread.currentThread());
             RealmResults<Question> results = realm.where(Question.class)
+                    .sort("date", Sort.DESCENDING)
+                    .findAll();
+            if (onSuccess != null) {
+                onSuccess.invoke(realm.copyFromRealm(results));
+            }
+        }, error -> ErrorUtil.invokeThrowable(onError, error));
+    }
+
+    @Override
+    public void queryByCategoryId(String categoryId, Closure<List<Question>> onSuccess, Closure<Throwable> onError) {
+        mRealm.executeTransactionAsync(realm -> {
+            Log.i(TAG, "queryAll: " + Thread.currentThread());
+            RealmResults<Question> results = realm.where(Question.class)
+                    .equalTo("categoryId", categoryId)
                     .sort("date", Sort.DESCENDING)
                     .findAll();
             if (onSuccess != null) {
