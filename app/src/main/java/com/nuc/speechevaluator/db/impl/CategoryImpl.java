@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.nuc.speechevaluator.db.bean.Category;
 import com.nuc.speechevaluator.db.bean.Question;
+import com.nuc.speechevaluator.db.bean.User;
 import com.nuc.speechevaluator.db.operation.CategoryOperation;
 import com.nuc.speechevaluator.util.Closure;
 import com.nuc.speechevaluator.util.ErrorUtil;
@@ -43,7 +44,14 @@ public class CategoryImpl implements CategoryOperation {
 
     @Override
     public void query(String id, Closure<Category> onSuccess, Closure<Throwable> onError) {
-
+        mRealm.executeTransactionAsync(realm -> {
+            Category category = realm.where(Category.class)
+                    .equalTo("id", id)
+                    .findFirst();
+            if (onSuccess != null) {
+                onSuccess.invoke(realm.copyFromRealm(category));
+            }
+        }, error -> ErrorUtil.invokeThrowable(onError, error));
     }
 
     @Override

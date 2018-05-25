@@ -44,4 +44,13 @@ public class Category extends RealmObject implements Serializable {
         this.message = message;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

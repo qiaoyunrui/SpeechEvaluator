@@ -103,6 +103,38 @@
                 android:layout_margin="5dp"
                 android:hint="@string/content" />
 
+            <LinearLayout
+                android:id="@+id/vg_upload_select_category"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/adminer_style"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/ic_category_white" />
+
+                <TextView
+                    android:id="@+id/tv_upload_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/select_category"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btn_upload_upload"
                 android:layout_width="match_parent"

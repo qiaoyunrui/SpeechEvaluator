@@ -29,7 +29,9 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechEvaluator;
 import com.nuc.speechevaluator.R;
 import com.nuc.speechevaluator.db.bean.Question;
+import com.nuc.speechevaluator.db.impl.CategoryImpl;
 import com.nuc.speechevaluator.db.impl.UserImpl;
+import com.nuc.speechevaluator.db.operation.CategoryOperation;
 import com.nuc.speechevaluator.db.operation.UserOperation;
 import com.nuc.speechevaluator.fragment.ResultFragment;
 import com.nuc.speechevaluator.util.Constant;
@@ -58,10 +60,12 @@ public class EvaluatorActivity extends AppCompatActivity {
     private TextView mTvType;
     private TextView mTvContent;
     private TextView mTvOwner;      //显示出题人的用户名
+    private TextView mTvCategory;   //题目分类
     private TextView mTvHint;
     private FloatingActionButton mFabEvaluator;
 
     private UserOperation mUserOperation;
+    private CategoryOperation mCategoryOperation;
 
     private Toolbar mToolbar;
     private ActionBar mActionBar;
@@ -75,6 +79,7 @@ public class EvaluatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluator);
         mUserOperation = new UserImpl();
+        mCategoryOperation = new CategoryImpl();
         mIse = SpeechEvaluator.createEvaluator(EvaluatorActivity.this, null);
         initView();
         initEvent();
@@ -91,6 +96,7 @@ public class EvaluatorActivity extends AppCompatActivity {
         mTvContent = findViewById(R.id.tv_evaluator_content);
         mTvType = findViewById(R.id.tv_evaluator_type);
         mTvOwner = findViewById(R.id.tv_evaluator_owner_username);
+        mTvCategory = findViewById(R.id.tv_evaluator_category);
         mFabEvaluator = findViewById(R.id.fab_evaluator_evaluator);
         mTvHint = findViewById(R.id.tv_evaluator_hint);
         mToolbar = findViewById(R.id.tb_common);
@@ -135,6 +141,14 @@ public class EvaluatorActivity extends AppCompatActivity {
             mUserOperation.query(mQuestion.getOwnerId(), user -> {
                 if (user != null) {
                     mTvOwner.setText(user.getUsername());
+                }
+            }, null);
+            // 根据分类 id 获取分类名
+            mCategoryOperation.query(mQuestion.getCategoryId(), category -> {
+                Log.i(TAG, "initData: " + category);
+                Log.i(TAG, "initData: " + category.getTitle());
+                if (category != null) {
+                    mTvCategory.setText(category.getTitle());
                 }
             }, null);
         }

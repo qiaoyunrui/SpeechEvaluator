@@ -15,6 +15,7 @@ public class Config {
     public static final int MAIN_CODE = 0x129;
     public static final int ME_CODE = 0x130;
     public static final int CATEGORY_CODE = 0x131;
+    public static final int UPLOAD_CODE = 0x132;
 
 
     public final static double QUERY_LIMIT_RADIUS = 0.05;

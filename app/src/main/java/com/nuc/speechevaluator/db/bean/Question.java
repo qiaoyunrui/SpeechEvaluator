@@ -35,6 +35,17 @@ public class Question extends RealmObject implements Serializable {
 
     private String ownerId;   //出题人 ID
 
+    private String categoryId;  //分类 ID
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public Question setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+        return this;
+    }
+
     public String getOwnerId() {
         return ownerId;
     }

@@ -56,4 +56,5 @@
     <string name="search">搜索</string>
     <string name="add_category">添加新的分类</string>
     <string name="input_new_category">输入新的分类</string>
+    <string name="select_category">点击选择类别</string>
 </resources>

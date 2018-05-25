@@ -17,15 +17,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nuc.speechevaluator.R;
 import com.nuc.speechevaluator.db.UserService;
+import com.nuc.speechevaluator.db.bean.Category;
 import com.nuc.speechevaluator.db.bean.Question;
 import com.nuc.speechevaluator.db.bean.User;
 import com.nuc.speechevaluator.db.impl.QuestionImpl;
 import com.nuc.speechevaluator.db.operation.QuestionOperation;
 import com.nuc.speechevaluator.util.Closure;
+import com.nuc.speechevaluator.util.Config;
 import com.nuc.speechevaluator.util.Constant;
 
 import java.util.Map;
@@ -51,8 +54,12 @@ public class UploadActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private ActionBar mActionBar;
     private Button mBtnUpload;
+    private View mVSelectCategory;
+    private TextView mTvCategory;
     // Loading 界面
     private ViewGroup mVgLoading;
+
+    private String mCategoryId;
 
     private Map<Integer, Integer> mTypeMap = new ArrayMap<>();
 
@@ -75,6 +82,8 @@ public class UploadActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.tb_common);
         mBtnUpload = findViewById(R.id.btn_upload_upload);
         mVgLoading = findViewById(R.id.vg_loading);
+        mVSelectCategory = findViewById(R.id.vg_upload_select_category);
+        mTvCategory = findViewById(R.id.tv_upload_category);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -90,6 +99,11 @@ public class UploadActivity extends AppCompatActivity {
         mRgLanguage.setOnCheckedChangeListener((group, checkedId) -> notifyLanguageChange(checkedId));
         // 点击上传按钮
         mBtnUpload.setOnClickListener(v -> upload());
+        mVSelectCategory.setOnClickListener(v -> {
+            // 跳转到 选择类别 页面
+            Intent intent = new Intent(this, CategoryActivity.class);
+            startActivityForResult(intent, Config.UPLOAD_CODE);
+        });
     }
 
     private void initData() {
@@ -122,11 +136,30 @@ public class UploadActivity extends AppCompatActivity {
                     Question question = Question.createQuestion(user.getId());
                     question.setLanguageType(mTypeMap.get(mRgLanguage.getCheckedRadioButtonId()))
                             .setQuestionType(mTypeMap.get(mRgType.getCheckedRadioButtonId()))
-                            .setContent(mEtContent.getText().toString().trim());
+                            .setContent(mEtContent.getText().toString().trim())
+                            .setCategoryId(mCategoryId);
                     if (TextUtils.isEmpty(question.getContent())) {
                         mVgLoading.setVisibility(View.GONE);
                         Toast.makeText(this, "题目内容不能为空", Toast.LENGTH_SHORT).show();
                         return;
+                    }
+                    if (TextUtils.isEmpty(question.getCategoryId())) {
+                        mVgLoading.setVisibility(View.GONE);
+                        Toast.makeText(this, "类别不能为空", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (question.getLanguageType() == Constant.QUESTION_LANG_TYPE_ENGLISH) {
+                        if (!isEnglish(question.getContent())) {    // 内容不是英文
+                            mVgLoading.setVisibility(View.GONE);
+                            Toast.makeText(this, "内容请输入英文", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    } else {
+                        if (!isChinese(question.getContent())) {    // 内容不是中文
+                            mVgLoading.setVisibility(View.GONE);
+                            Toast.makeText(this, "内容请输入中文", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                     }
                     mOperation.add(question, aVoid -> {
                         Toast.makeText(this, "上传成功", Toast.LENGTH_SHORT).show();
@@ -173,6 +206,62 @@ public class UploadActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Config.UPLOAD_CODE) {
+            if (resultCode == Config.CATEGORY_CODE) {
+                if (data == null) {
+                    return;
+                }
+                Category category = (Category) data.getSerializableExtra(Config.KEY_CATEGORY);
+                if (category == null) {
+                    return;
+                }
+                mTvCategory.setText(category.getTitle());
+                mCategoryId = category.getId();
+            }
+        }
+
+    }
+
+    /**
+     * 判断是否为英文
+     *
+     * @param word
+     * @return
+     */
+    private boolean isEnglish(String word) {
+        return word.matches("^[a-zA-Z ,.:]*");
+    }
+
+    // GENERAL_PUNCTUATION 判断中文的“号
+    // CJK_SYMBOLS_AND_PUNCTUATION 判断中文的。号
+    // HALFWIDTH_AND_FULLWIDTH_FORMS 判断中文的，号
+    private static boolean isChinese(char c) {
+        Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
+        if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+                || ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+                || ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+                || ub == Character.UnicodeBlock.GENERAL_PUNCTUATION
+                || ub == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+                || ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isChinese(String strName) {
+        char[] ch = strName.toCharArray();
+        for (int i = 0; i < ch.length; i++) {
+            char c = ch[i];
+            if (!isChinese(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
