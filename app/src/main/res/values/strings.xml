@@ -54,4 +54,6 @@
     <string name="adminer">管理员</string>
     <string name="owner">出题人</string>
     <string name="search">搜索</string>
+    <string name="add_category">添加新的分类</string>
+    <string name="input_new_category">输入新的分类</string>
 </resources>

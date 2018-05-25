@@ -8,7 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
-        android:background="@drawable/search_style">
+        android:background="@drawable/search_style"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <ImageView
             android:id="@+id/iv_search_back"
@@ -18,17 +20,19 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:clickable="true"
             android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:src="@drawable/ic_back" />
 
         <EditText
+            android:id="@+id/et_search_content"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toEndOf="@+id/iv_search_back"
             android:layout_toStartOf="@+id/iv_search_close"
             android:background="@null"
             android:hint="@string/search"
+            android:imeOptions="actionSearch"
             android:singleLine="true"
             android:textColor="@android:color/white"
             android:textColorHint="#ededed" />
@@ -41,9 +45,9 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
-            android:clickable="true"
             android:layout_marginStart="8dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:src="@drawable/ic_close" />
 
     </RelativeLayout>

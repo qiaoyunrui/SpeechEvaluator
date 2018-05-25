@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));   // 需改底部虚拟按键部分的颜色
         initView();
         initFragment();
         initEvent();
-//        openFragment(mMainFragment);   //默认打开一个 fragment ，第一个页面
     }
 
 

@@ -14,6 +14,7 @@ public class Config {
     public final static int GALLERY_CODE = 0x128;
     public static final int MAIN_CODE = 0x129;
     public static final int ME_CODE = 0x130;
+    public static final int CATEGORY_CODE = 0x131;
 
 
     public final static double QUERY_LIMIT_RADIUS = 0.05;
@@ -65,4 +66,6 @@ public class Config {
     public static final String KEY_USER_ID = "user_id";
 
     public static final String KEY_ADMIN = "1234567890";
+
+    public static final String KEY_CATEGORY = "key_category";
 }

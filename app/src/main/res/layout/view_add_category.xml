@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btn_add_category"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/add_category"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</RelativeLayout>
