@@ -3,6 +3,7 @@ package com.nuc.speechevaluator.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -13,12 +14,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +32,17 @@ import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechEvaluator;
 import com.nuc.speechevaluator.R;
+import com.nuc.speechevaluator.db.UserService;
 import com.nuc.speechevaluator.db.bean.Question;
+import com.nuc.speechevaluator.db.bean.User;
 import com.nuc.speechevaluator.db.impl.CategoryImpl;
+import com.nuc.speechevaluator.db.impl.QuestionImpl;
 import com.nuc.speechevaluator.db.impl.UserImpl;
 import com.nuc.speechevaluator.db.operation.CategoryOperation;
+import com.nuc.speechevaluator.db.operation.QuestionOperation;
 import com.nuc.speechevaluator.db.operation.UserOperation;
 import com.nuc.speechevaluator.fragment.ResultFragment;
+import com.nuc.speechevaluator.util.Config;
 import com.nuc.speechevaluator.util.Constant;
 import com.nuc.speechevaluator.util.DataManager;
 
@@ -47,6 +56,7 @@ public class EvaluatorActivity extends AppCompatActivity {
     private static final String KEY_QUESTION = "key_question";
 
     public static final String KEY_RESULT = "key_result";
+    private AlertDialog mDialog;
 
     public static Intent newIntent(Context context, Question question) {
         Intent intent = new Intent(context, EvaluatorActivity.class);
@@ -63,9 +73,11 @@ public class EvaluatorActivity extends AppCompatActivity {
     private TextView mTvCategory;   //题目分类
     private TextView mTvHint;
     private FloatingActionButton mFabEvaluator;
+    private boolean isAdminer = false;   //是否为管理员
 
     private UserOperation mUserOperation;
     private CategoryOperation mCategoryOperation;
+    private QuestionOperation mQuestionOperation;
 
     private Toolbar mToolbar;
     private ActionBar mActionBar;
@@ -80,6 +92,7 @@ public class EvaluatorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_evaluator);
         mUserOperation = new UserImpl();
         mCategoryOperation = new CategoryImpl();
+        mQuestionOperation = new QuestionImpl();
         mIse = SpeechEvaluator.createEvaluator(EvaluatorActivity.this, null);
         initView();
         initEvent();
@@ -105,6 +118,12 @@ public class EvaluatorActivity extends AppCompatActivity {
         // 显示返回按钮
         mActionBar.setDisplayHomeAsUpEnabled(true);
         mActionBar.setTitle(getString(R.string.evaluator));
+        mDialog = new AlertDialog.Builder(this)
+                .setMessage("是否删除这个题目？")
+                .setTitle("信息")
+                .setNegativeButton("取消", null)
+                .setPositiveButton("确定", (dialog, which) -> delete())
+                .create();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -129,6 +148,11 @@ public class EvaluatorActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        UserService.getInstance(this).getCurrentUser(user -> runOnUiThread(() -> {
+            if (user != null) {
+                isAdminer = user.getType() == User.USER_TYPE_ADMIN;
+            }
+        }));
         Intent intent = getIntent();
         if (intent != null) {
             mQuestion = (Question) intent.getSerializableExtra(KEY_QUESTION);
@@ -320,6 +344,38 @@ public class EvaluatorActivity extends AppCompatActivity {
         }
     }
 
+    private void showDeleteDialog() {
+        if (isAdminer) {
+            mDialog.show();
+        } else {
+            showTip("没有权限");
+        }
+    }
+
+    private void delete() {
+        if (mQuestion == null) {
+            showTip("题目不存在");
+            return;
+        }
+        mQuestionOperation.remove(mQuestion.getId(), question -> {
+            runOnUiThread(() -> {
+                if (question != null) {
+                    showTip("删除成功");
+                    setResult(Config.EVALUATOR_CODE);
+                    finish();
+                } else {
+                    showTip("出了点问题");
+                }
+            });
+        }, throwable -> {
+            runOnUiThread(() -> {
+                throwable.printStackTrace();
+                showTip("出了点问题");
+            });
+        });
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -327,8 +383,18 @@ public class EvaluatorActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
+            case R.id.menu_delete:
+                showDeleteDialog();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_delete, menu);
+        return true;
     }
 
 }

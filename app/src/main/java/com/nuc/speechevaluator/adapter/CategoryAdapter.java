@@ -2,6 +2,7 @@ package com.nuc.speechevaluator.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryHolder> {
 
+    private static final String TAG = "CategoryAdapter";
+
     private static final int ITEM_TYPE_HEADER = 0x01;
     private static final int ITEM_TYPE_NORMAL = 0x02;
 
@@ -29,11 +32,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public CategoryAdapter() {
         mList.add(new Category());
-    }
-
-    public void setShowAddButton(boolean showAddButton) {
-        this.mShowAddButton = showAddButton;
-        notifyItemChanged(0);
     }
 
     public void setCategorys(List<Category> list) {
@@ -53,7 +51,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
         if (viewType == ITEM_TYPE_HEADER) {
-            if (mHeaderView != null && mShowAddButton) {
+            if (mHeaderView != null) {
                 itemView = mHeaderView;
             } else {
                 itemView = new View(parent.getContext());

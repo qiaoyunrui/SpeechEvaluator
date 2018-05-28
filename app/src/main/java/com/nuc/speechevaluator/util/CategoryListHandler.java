@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import com.nuc.speechevaluator.db.bean.Category;
 import com.nuc.speechevaluator.db.bean.User;
 
 public class CategoryListHandler {
+
+    private static final String TAG = "CategoryListHandler";
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -38,15 +41,6 @@ public class CategoryListHandler {
         View header = LayoutInflater.from(mContext).inflate(R.layout.view_add_category, null);
         mAdd = header.findViewById(R.id.btn_add_category);
         mAdapter.setHeader(header);
-//        mAdapter.setShowAddButton(UserService.getInstance(mContext).isOnline());
-        UserService.getInstance(mContext)
-                .getCurrentUser(user -> {
-                    if (user != null) {
-                        mHandler.post(() -> {
-                            mAdapter.setShowAddButton(user.getType() == User.USER_TYPE_ADMIN);  //只有管理员才显示添加分类按钮
-                        });
-                    }
-                });
     }
 
     public RecyclerView getRecyclerView() {

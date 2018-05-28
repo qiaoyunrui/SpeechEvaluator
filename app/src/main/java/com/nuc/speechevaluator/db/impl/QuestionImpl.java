@@ -40,7 +40,22 @@ public class QuestionImpl implements QuestionOperation {
 
     @Override
     public void remove(String id, Closure<Question> onSuccess, Closure<Throwable> onError) {
-
+        mRealm.executeTransactionAsync(realm -> {
+            Question temp = realm.where(Question.class)
+                    .equalTo("id", id)
+                    .findFirst();
+            if (temp == null) {
+                if (onSuccess != null) {
+                    onSuccess.invoke(null);
+                }
+                return;
+            }
+            Question question = realm.copyFromRealm(temp);
+            temp.deleteFromRealm();
+            if (onSuccess != null) {
+                onSuccess.invoke(question);
+            }
+        }, error -> ErrorUtil.invokeThrowable(onError, error));
     }
 
     @Override

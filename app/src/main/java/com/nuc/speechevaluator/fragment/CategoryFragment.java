@@ -23,7 +23,9 @@ import android.widget.Toast;
 
 import com.nuc.speechevaluator.R;
 import com.nuc.speechevaluator.adapter.CategoryAdapter;
+import com.nuc.speechevaluator.db.UserService;
 import com.nuc.speechevaluator.db.bean.Category;
+import com.nuc.speechevaluator.db.bean.User;
 import com.nuc.speechevaluator.db.impl.CategoryImpl;
 import com.nuc.speechevaluator.db.operation.CategoryOperation;
 import com.nuc.speechevaluator.util.CategoryListHandler;
@@ -42,13 +44,13 @@ public class CategoryFragment extends Fragment {
     private EditText mEtInput;
     private Toolbar mToolBar;
     private QuestionFragment mQuestionFragment;
+    private boolean isAdminer = false;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_category, container, false);
         initView();
-        initEvent();
         initEvent();
         initData();
         initFragment();
@@ -82,7 +84,11 @@ public class CategoryFragment extends Fragment {
 
     private void initEvent() {
         mBtnAdd.setOnClickListener(v -> {
-            mDialog.show();
+            if (isAdminer) {
+                mDialog.show();
+            } else {
+                Toast.makeText(getContext(), "没有权限", Toast.LENGTH_SHORT).show();
+            }
         });
         mAdapter.setClosure(category -> {
             if (category == null) return;
@@ -92,6 +98,12 @@ public class CategoryFragment extends Fragment {
 
     private void initData() {
         refresh();
+        UserService.getInstance(getContext())
+                .getCurrentUser(user -> {
+                    if (user != null) {
+                        isAdminer = user.getType() == User.USER_TYPE_ADMIN;
+                    }
+                });
     }
 
     private void initFragment() {
