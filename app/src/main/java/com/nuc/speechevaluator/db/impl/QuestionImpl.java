@@ -76,6 +76,12 @@ public class QuestionImpl implements QuestionOperation {
         }, error -> ErrorUtil.invokeThrowable(onError, error));
     }
 
+    /**
+     * 查询同一分类下的题目
+     * @param categoryId
+     * @param onSuccess
+     * @param onError
+     */
     @Override
     public void queryByCategoryId(String categoryId, Closure<List<Question>> onSuccess, Closure<Throwable> onError) {
         mRealm.executeTransactionAsync(realm -> {

@@ -68,6 +68,7 @@ public class CategoryFragment extends Fragment {
         mToolBar.setTitle(R.string.category);
         mOperation = new CategoryImpl();
         View inputWrapper = LayoutInflater.from(getContext()).inflate(R.layout.view_category_input, null, false);
+        // 添加分类的对话框
         mDialog = new AlertDialog.Builder(getContext())
                 .setView(inputWrapper)
                 .setTitle("新的标题")
@@ -83,6 +84,7 @@ public class CategoryFragment extends Fragment {
     }
 
     private void initEvent() {
+        // 添加分类的按钮
         mBtnAdd.setOnClickListener(v -> {
             if (isAdminer) {
                 mDialog.show();
@@ -90,6 +92,7 @@ public class CategoryFragment extends Fragment {
                 Toast.makeText(getContext(), "没有权限", Toast.LENGTH_SHORT).show();
             }
         });
+        // 单击分类 Item
         mAdapter.setClosure(category -> {
             if (category == null) return;
             mQuestionFragment.refresh(category.getId());

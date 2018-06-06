@@ -21,6 +21,9 @@ import com.nuc.speechevaluator.db.bean.Question;
 import com.nuc.speechevaluator.db.impl.QuestionImpl;
 import com.nuc.speechevaluator.db.operation.QuestionOperation;
 
+/**
+ * 问题的页面，子页面
+ */
 public class QuestionFragment extends Fragment {
 
     private static final String TAG = "QuestionFragment";
@@ -49,6 +52,7 @@ public class QuestionFragment extends Fragment {
     }
 
     private void initEvent() {
+        // Item 单击
         mAdapter.setItemClickListener(question -> {
             Log.i(TAG, "invoke: " + question);
             turn2EvaluatorActivity(question);
@@ -62,7 +66,7 @@ public class QuestionFragment extends Fragment {
     }
 
     public void refresh(String categoryId) {
-        // 从数据库加载所有的题目，并显示
+        // 从数据库加载当前分类所有的题目，并显示
         mQuestionOperation.queryByCategoryId(categoryId, questions -> {
             // 加载成功，question - 获取的数据 List<Question>
             mHandler.post(() -> mAdapter.setQuestions(questions));

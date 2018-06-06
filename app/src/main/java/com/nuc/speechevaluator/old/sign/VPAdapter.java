@@ -6,9 +6,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
-/**
- * Created by qiaoyunrui on 16-8-26.
- */
 public class VPAdapter extends FragmentStatePagerAdapter {
 
     private static final String TAG = "VPAdapter";

@@ -117,6 +117,9 @@ public class SignUpFragment extends Fragment implements SignUpContract.View {
         Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT).show();
     }
 
+    /**
+     * 显示注册按钮
+     */
     @Override
     public void enableSignUp() {
         if (usernameOK && passwdOK && passwdAgainOK) {

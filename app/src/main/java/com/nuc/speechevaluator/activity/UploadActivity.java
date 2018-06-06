@@ -33,6 +33,9 @@ import com.nuc.speechevaluator.util.Constant;
 
 import java.util.Map;
 
+/**
+ * 上传题目页面
+ */
 public class UploadActivity extends AppCompatActivity {
 
     private static final String TAG = "UploadActivity";
@@ -55,6 +58,7 @@ public class UploadActivity extends AppCompatActivity {
     private ActionBar mActionBar;
     private Button mBtnUpload;
     private View mVSelectCategory;
+    // 类别文字
     private TextView mTvCategory;
     // Loading 界面
     private ViewGroup mVgLoading;
@@ -99,6 +103,7 @@ public class UploadActivity extends AppCompatActivity {
         mRgLanguage.setOnCheckedChangeListener((group, checkedId) -> notifyLanguageChange(checkedId));
         // 点击上传按钮
         mBtnUpload.setOnClickListener(v -> upload());
+        // 点击选择类别
         mVSelectCategory.setOnClickListener(v -> {
             // 跳转到 选择类别 页面
             Intent intent = new Intent(this, CategoryActivity.class);
@@ -216,6 +221,7 @@ public class UploadActivity extends AppCompatActivity {
                 if (data == null) {
                     return;
                 }
+                // 上一个页面返回的类别对象
                 Category category = (Category) data.getSerializableExtra(Config.KEY_CATEGORY);
                 if (category == null) {
                     return;

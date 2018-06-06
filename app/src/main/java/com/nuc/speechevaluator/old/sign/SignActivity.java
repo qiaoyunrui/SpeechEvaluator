@@ -27,7 +27,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by qiaoyunrui on 16-8-26.
+ * 注册和登录的页面
+ * MVP架构
+ * M - 数据
+ * V - View 视图
+ * P - Presenter 逻辑
+ *
+ * Fragment 轻量级的 Activity,砌在Activity
  */
 public class SignActivity extends AppCompatActivity {
 
@@ -102,17 +108,22 @@ public class SignActivity extends AppCompatActivity {
         mTLayout.setupWithViewPager(mVPager);
     }
 
+    /**
+     * 点击ActionBar上的按钮会调用
+     * @param item
+     * @return
+     */
     @Override
-
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
+            case android.R.id.home:     // 左上角返回按钮
+                onBackPressed();    //和点击返回键同样的效果
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    // 切换到登录页面
     public void turnSignIn() {
         mVPager.setCurrentItem(0);
     }

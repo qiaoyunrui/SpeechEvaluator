@@ -15,12 +15,20 @@ import com.nuc.speechevaluator.old.sign.SignActivity;
 import com.nuc.speechevaluator.util.Closure;
 import com.nuc.speechevaluator.util.Config;
 
+/**
+ * 用户管理的类
+ */
 public class UserService {
 
     private static final String TAG = "UserService";
 
     private static UserService sInstance;
 
+    /**
+     * 单例模式，只能创建一个对象
+     * @param context
+     * @return
+     */
     public static UserService getInstance(Context context) {
         if (sInstance == null) {
             sInstance = new UserService(context);
@@ -39,14 +47,6 @@ public class UserService {
         mOperation = new UserImpl();
     }
 
-    public int getUserType() {
-        if (mCurrentUser == null) {
-            return User.USER_TYPE_NONE;
-        } else {
-            return mCurrentUser.getType();
-        }
-    }
-
     /**
      * 获取当前登录用户
      */
@@ -60,6 +60,7 @@ public class UserService {
             closure.invoke(null);
             return;
         }
+        // SharedPreferences 的作用就是序列化对象，将基本数据类型存储在本地
         // 反序列化 UserID，从数据库查询数据
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(Config.KEY_USER_SERVICE, Context.MODE_PRIVATE);
         String id = sharedPreferences.getString(Config.KEY_USER_ID, "");
@@ -67,15 +68,21 @@ public class UserService {
             closure.invoke(null);
             return;
         }
+        // 通过 userId 查询 User 的信息
         mOperation.query(id, closure, throwable -> {
             closure.invoke(null);
             throwable.printStackTrace();
         });
     }
 
+    /**
+     * 是否有用户登录
+     * @return
+     */
     public boolean isOnline() {
         if (mCurrentUser != null) return true;
         if (mContext != null) {
+            // 从本地获取存储的userID
             SharedPreferences sharedPreferences = mContext.getSharedPreferences(Config.KEY_USER_SERVICE, Context.MODE_PRIVATE);
             String id = sharedPreferences.getString(Config.KEY_USER_ID, "");
             return !TextUtils.isEmpty(id);
@@ -88,6 +95,7 @@ public class UserService {
         this.mCurrentUser = user;
         if (mCurrentUser != null && mContext != null) {
             String id = mCurrentUser.getId();
+            // 把当前登录用户的ID存储在本地
             @SuppressLint("CommitPrefEdits")
             SharedPreferences.Editor editor = mContext
                     .getSharedPreferences(Config.KEY_USER_SERVICE, Context.MODE_PRIVATE)
@@ -101,6 +109,7 @@ public class UserService {
     public void signOut() {
         mCurrentUser = null;
         if (mContext != null) {
+            // 将存储在本地的ID设置为 ""
             @SuppressLint("CommitPrefEdits")
             SharedPreferences.Editor editor = mContext
                     .getSharedPreferences(Config.KEY_USER_SERVICE, Context.MODE_PRIVATE)
@@ -108,25 +117,6 @@ public class UserService {
             editor.putString(Config.KEY_USER_ID, "");
             editor.apply();
         }
-    }
-
-    /**
-     * 检查并登陆
-     *
-     * @param context 必须是 Activity 的 context
-     */
-    public static void checkAndSignIn(Context context, int requestCode) {
-        if (context == null) return;
-        UserService userService = UserService.getInstance(context);
-        if (!userService.isOnline()) {
-            Intent intent = new Intent(context, SignActivity.class);
-            ((Activity) context).startActivityForResult(intent, requestCode);
-        }
-    }
-
-    public static void turnSignIn(Context context, int requestCode) {
-        Intent intent = new Intent(context, SignActivity.class);
-        ((Activity) context).startActivityForResult(intent, requestCode);
     }
 
 }

@@ -85,7 +85,7 @@ public class MainFragment extends Fragment {
         // RecyclerView 中每个 Item 的点击事件
 //        mAdapter.setItemClickListener(this::turn2EvaluatorActivity);
         //            Log.i(TAG, "invoke: " + question);
-        mAdapter.setItemClickListener(this::turn2EvaluatorActivity);
+        mAdapter.setItemClickListener(this::turn2EvaluatorActivity);    // 单击
         mAdapter.setEmptyClosure(aBoolean -> mVgEmpty.setVisibility(aBoolean ? View.VISIBLE : View.GONE));
         mAdapter.setLongPressClosure((question, position) -> {  // 长按 Item
             Log.i(TAG, "initEvent: 是管理员嘛？ " + isAdminer);
@@ -101,6 +101,7 @@ public class MainFragment extends Fragment {
                             mHandler.post(() -> {
                                 if (question != null) {
                                     Toast.makeText(getContext(), "删除成功", Toast.LENGTH_SHORT).show();
+                                    // RecycelrView 中的数据进行删除
                                     mAdapter.remove(position);
                                 } else {
                                     Toast.makeText(getContext(), "出了点问题", Toast.LENGTH_SHORT).show();
@@ -117,6 +118,8 @@ public class MainFragment extends Fragment {
         });
     }
 
+    // 判断当前登录用户的身份
+    // 加载数据
     private void refresh() {
         UserService.getInstance(getContext()).getCurrentUser(user -> mHandler.post(() -> {
             if (user == null) return;
@@ -152,12 +155,12 @@ public class MainFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == UploadActivity.REQUEST_CODE_UPLOAD) {
-            if (resultCode == UploadActivity.RESULT_CODE_UPLOAD) {
+            if (resultCode == UploadActivity.RESULT_CODE_UPLOAD) {  // 上传页面上传了新的题目，所以更新页面
                 mVgLoading.setVisibility(View.VISIBLE);
                 refresh();
             }
         } else if (requestCode == Config.MAIN_CODE) {
-            if (resultCode == Config.EVALUATOR_CODE) {
+            if (resultCode == Config.EVALUATOR_CODE) {  // 评测页面删除了题目，更新页面
                 mVgLoading.setVisibility(View.VISIBLE);
                 refresh();
             }

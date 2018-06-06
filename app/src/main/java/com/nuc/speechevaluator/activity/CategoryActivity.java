@@ -66,6 +66,7 @@ public class CategoryActivity extends AppCompatActivity {
         mIvBack = findViewById(R.id.iv_search_back);
         mIvClose = findViewById(R.id.iv_search_close);
         View inputWrapper = LayoutInflater.from(this).inflate(R.layout.view_category_input, null, false);
+        // 添加分类的对话框
         mDialog = new AlertDialog.Builder(this)
                 .setView(inputWrapper)
                 .setTitle("新的标题")
@@ -105,6 +106,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
             return false;
         });
+        // 点击分类 Item
         mAdapter.setClosure(category -> {
             Intent intent = new Intent();
             intent.putExtra(Config.KEY_CATEGORY, category);

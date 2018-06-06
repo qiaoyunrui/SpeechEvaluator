@@ -28,7 +28,7 @@ import com.nuc.speechevaluator.fragment.MainFragment;
 import com.nuc.speechevaluator.util.Config;
 
 /**
- * Created by qiaoyunrui on 16-8-26.
+ * 登录页面
  */
 public class SignInFragment extends Fragment implements SignInContract.View {
 
@@ -64,6 +64,13 @@ public class SignInFragment extends Fragment implements SignInContract.View {
 
             }
 
+            /**
+             * 当输入的内容发生改变的时候，会调用
+             * @param s
+             * @param start
+             * @param before
+             * @param count
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() == 0) {
@@ -148,6 +155,9 @@ public class SignInFragment extends Fragment implements SignInContract.View {
         mPresenter = presenter;
     }
 
+    /**
+     * 显示进度条,转菊花
+     */
     @Override
     public void showProgressBar() {
         mPbSignin.setVisibility(View.VISIBLE);
@@ -158,6 +168,9 @@ public class SignInFragment extends Fragment implements SignInContract.View {
         mPbSignin.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * 显示登录按钮
+     */
     @Override
     public void showFabSignIn() {
         if (usernameOK && passwdOK) {
@@ -171,6 +184,10 @@ public class SignInFragment extends Fragment implements SignInContract.View {
         mFabSignin.hide();
     }
 
+    /**
+     * 显示底部提示小黑条
+     * @param message
+     */
     @Override
     public void showSnackBar(String message) {
         Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT).show();

@@ -30,6 +30,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         if (questions == null) return;
         mQuestions.clear();
         mQuestions.addAll(questions);
+        // 通知页面进行更新
         notifyDataSetChanged();
     }
 
@@ -88,6 +89,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         Log.i(TAG, "remove: " + mQuestions);
         mQuestions.remove(position);
         Log.i(TAG, "remove: " + mQuestions);
+        // 通知页面进行更新
         notifyItemRemoved(position);
     }
 

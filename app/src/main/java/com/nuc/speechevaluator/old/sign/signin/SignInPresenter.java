@@ -7,9 +7,6 @@ import com.nuc.speechevaluator.db.impl.UserImpl;
 import com.nuc.speechevaluator.db.operation.UserOperation;
 import com.nuc.speechevaluator.util.Closure;
 
-/**
- * Created by qiaoyunrui on 16-8-26.
- */
 public class SignInPresenter implements SignInContract.Presenter {
 
     private static final String TAG = "SignInPresenter";

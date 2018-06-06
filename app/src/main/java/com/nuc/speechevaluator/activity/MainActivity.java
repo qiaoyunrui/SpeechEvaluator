@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup mWrapper;
     private MeFragment mMeFragment; // 第三个 tab 所对应的页面
     private MainFragment mMainFragment;    // 第一个 tab 对应的页面
-    private CategoryFragment mCategoryFragment;
+    private CategoryFragment mCategoryFragment; // 第二个 Fragment ，分类页面
 
     private Fragment mShowingFragment;  //当前显示的 fragment
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));   // 需改底部虚拟按键部分的颜色
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));   // 修改底部虚拟按键部分的颜色
         initView();
         initFragment();
         initEvent();
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         mMainFragment = new MainFragment();
         mCategoryFragment = new CategoryFragment();
         mShowingFragment = mMainFragment;
+        // 把 3 个Fragment 添加到 Actiivity，并同时隐藏第二个和第三个
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.vg_main_fragment_wrapper, mMainFragment)
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initEvent() {
+        // 点击底部 Tab 时会调用
         mBottomView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_question:
@@ -91,8 +93,4 @@ public class MainActivity extends AppCompatActivity {
         mShowingFragment = fragment;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }

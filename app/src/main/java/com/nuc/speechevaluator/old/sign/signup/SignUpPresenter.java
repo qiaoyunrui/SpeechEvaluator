@@ -36,6 +36,7 @@ public class SignUpPresenter implements SignUpContract.Presenter {
                 callback.invoke(null);
             }
         }, throwable -> {
+            // 用户名不存在
             User user = User.createUser(type, username, password);
             mOperation.add(user, aVoid -> {
                 if (callback != null) {

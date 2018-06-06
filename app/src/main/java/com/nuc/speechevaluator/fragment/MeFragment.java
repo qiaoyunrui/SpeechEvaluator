@@ -53,6 +53,7 @@ public class MeFragment extends Fragment implements IFragment {
         mToolbar = rootView.findViewById(R.id.tb_common);
         mToolbar.setTitle(getString(R.string.me));
         mTvAdmin = rootView.findViewById(R.id.tv_me_admin);
+        // 点击退出登录按钮
         mBtnSignOut.setOnClickListener(v -> {
             // 退出登录
             UserService.getInstance(getContext()).signOut();
@@ -68,7 +69,9 @@ public class MeFragment extends Fragment implements IFragment {
                         mHandler.post(
                                 () -> {
                                     if (user != null) {
+                                        // 设置当前用户名字
                                         mTvUsername.setText(user.getUsername());
+                                        // 是否显示管理员标识
                                         mTvAdmin.setVisibility(user.getType() == User.USER_TYPE_ADMIN ? View.VISIBLE : View.GONE);
                                     }
                                 }
